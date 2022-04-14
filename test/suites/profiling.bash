@@ -20,8 +20,12 @@ SUITE_profiling_PROBE() {
 }
 
 SUITE_profiling_SETUP() {
-    echo 'int main(void) { return 0; }' >test.c
     unset CCACHE_NODIRECT
+
+    cat <<EOF >test.c
+int main(void) { return 0; }
+EOF
+    backdate test.c
 }
 
 SUITE_profiling() {

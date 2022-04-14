@@ -7,9 +7,15 @@ SUITE_profiling_hip_clang_PROBE() {
 }
 
 SUITE_profiling_hip_clang_SETUP() {
-    echo 'int main(void) { return 0; }' >test1.hip
-    echo 'int main(void) { int x = 0+0; return 0; }' >test2.hip
     unset CCACHE_NODIRECT
+
+    cat <<EOF >test1.hip
+int main(void) { return 0; }
+EOF
+    cat <<EOF >test2.hip
+int main(void) { int x = 0+0; return 0; }
+EOF
+    backdate test1.hip test2.hip
 }
 
 SUITE_profiling_hip_clang() {
