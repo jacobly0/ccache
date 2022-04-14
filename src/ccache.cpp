@@ -1149,6 +1149,7 @@ get_result_key_from_cpp(Context& ctx, Args& args, Hash& hash)
     }
     if (ctx.config.is_compiler_group_clang()) {
       args.push_back("--");
+      args_added++;
     }
     args.push_back(ctx.args_info.input_file);
     add_prefix(ctx, args, ctx.config.prefix_command_cpp());
